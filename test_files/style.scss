@@ -1,0 +1,85 @@
+$off-white: #ede7d1;
+$purple: #898EFF;
+$light-purple: lighten($purple, 10%);
+$blue: #5991db;
+$dark-blue: darken($blue, 10%);
+$light-blue: lighten($blue, 10%);
+
+.site-header {
+  background-color: $purple;
+  opacity: 0.8;
+  border-bottom: 10px solid $light-purple;
+}
+
+.site-logo-top-bar {
+  height: 60px;
+  margin-left: 1rem;
+}
+
+.vertical-center-top-text {
+  right: 1rem;
+  margin: 0;
+}
+
+.vertical-center {
+}
+
+.dark-blue-bg {
+  background-color: $dark-blue;
+  border-right: 10px solid $light-blue;
+}
+
+.off-white-bg {
+  background-color: $off-white;
+}
+
+.color-off-white {
+  color: $off-white;
+}
+
+#what-mean-div {
+  background-image: url(../img/stickerface_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+#wifel-div {
+  background-image: url(../img/7onebball_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  border-right: 10px solid darken($off-white, 10%);
+}
+
+#signup-div {
+  background-color: $blue;
+  border-right: 10px solid $light-blue;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+}
+
+.highlight-div {
+  height: 100%;
+  width: 100%;
+  padding: 10% 0;
+  background-color: rgba(0,0,0,0.6);
+  transition: all 200ms ease-in-out;
+  &:hover {
+    background-color: rgba(0,0,0,0.8);
+    cursor: pointer;
+  }
+}
+
+.footer-sect {
+  background-color: $blue;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  min-height: 400px;
+}

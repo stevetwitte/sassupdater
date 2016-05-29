@@ -8,13 +8,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static SassFile[] SassFileObjects = new SassFile[10];
+    public static Stage primaryStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("mainview.fxml"));
         primaryStage.setTitle("Sass Updater");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 600, 800));
         primaryStage.show();
-
+        SassFileObjects[0] = new SassFile("test.scss", "test.css");
     }
 
 

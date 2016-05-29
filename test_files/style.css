@@ -1,0 +1,65 @@
+.site-header {
+  background-color: #898EFF;
+  opacity: 0.8;
+  border-bottom: 10px solid #bcbfff; }
+
+.site-logo-top-bar {
+  height: 60px;
+  margin-left: 1rem; }
+
+.vertical-center-top-text {
+  right: 1rem;
+  margin: 0; }
+
+.dark-blue-bg {
+  background-color: #2f75d2;
+  border-right: 10px solid #83ade4; }
+
+.off-white-bg {
+  background-color: #ede7d1; }
+
+.color-off-white {
+  color: #ede7d1; }
+
+#what-mean-div {
+  background-image: url(../img/stickerface_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0; }
+
+#wifel-div {
+  background-image: url(../img/7onebball_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  border-right: 10px solid #dfd4ac; }
+
+#signup-div {
+  background-color: #5991db;
+  border-right: 10px solid #83ade4;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0; }
+
+.highlight-div {
+  height: 100%;
+  width: 100%;
+  padding: 10% 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 200ms ease-in-out; }
+  .highlight-div:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer; }
+
+.footer-sect {
+  background-color: #5991db;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0;
+  min-height: 400px; }
+
+/*# sourceMappingURL=style.css.map */
