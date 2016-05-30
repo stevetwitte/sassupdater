@@ -29,7 +29,11 @@ public class Controller {
             new FileChooser.ExtensionFilter("SASS/SCSS", "*.scss", "*.sass")
         );
         sassFile = FCSass.showOpenDialog(Main.primaryStage);
-        sassFileText.setText(sassFile.getAbsoluteFile().toString());
+        if (sassFile.getAbsoluteFile().toString().length() > 10) {
+            sassFileText.setText("..." + sassFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+        } else {
+            sassFileText.setText(sassFile.getAbsoluteFile().toString());
+        }
     }
 
     @FXML protected void onClickCssFile(ActionEvent event) {
@@ -39,7 +43,11 @@ public class Controller {
             new FileChooser.ExtensionFilter("CSS", "*.css")
         );
         cssFile = FCCss.showOpenDialog(Main.primaryStage);
-        cssFileText.setText(cssFile.getAbsoluteFile().toString());
+        if (cssFile.getAbsoluteFile().toString().length() > 10) {
+            cssFileText.setText("..." + cssFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+        } else {
+            cssFileText.setText(cssFile.getAbsoluteFile().toString());
+        }
     }
 
     @FXML protected void onClickAddFileModel(ActionEvent event) {
@@ -53,7 +61,8 @@ public class Controller {
         listOfAddedFiles.getChildren().clear();
         for (SassFile SObject: fileList) {
 
-            Button updateButton = new Button("Update");
+            Button updateButton = new Button("UP");
+            updateButton.getStyleClass().addAll("button", "green");
             updateButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     try {
@@ -64,7 +73,8 @@ public class Controller {
                 }
             });
 
-            Button removeButton = new Button("Remove");
+            Button removeButton = new Button("X");
+            removeButton.getStyleClass().addAll("button", "red");
             removeButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -73,7 +83,13 @@ public class Controller {
                 }
             });
 
-            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), updateButton, removeButton));
+            Text fileName = new Text(SObject.sassfilename.getName());
+            fileName.getStyleClass().add("file-label");
+
+            HBox itemBox = new HBox(fileName, updateButton, removeButton);
+            itemBox.getStyleClass().add("item-box");
+
+            listOfAddedFiles.getChildren().add(itemBox);
         }
     }
 }

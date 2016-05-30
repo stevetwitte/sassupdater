@@ -1,0 +1,27 @@
+.chosen-file-box {
+    -fx-fill: #444444;
+}
+
+.file-label {
+    -fx-fill: #2f75d2;
+}
+
+.item-box {
+    -fx-spacing: 20;
+}
+
+.button {
+    -fx-text-fill: #353434;
+}
+
+.blue {
+    -fx-background-color: #5991db;
+}
+
+.green {
+    -fx-background-color: #1daa5e;
+}
+
+.red {
+    -fx-background-color: #aa382f;
+}
