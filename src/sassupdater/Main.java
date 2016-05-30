@@ -62,7 +62,10 @@ public class Main extends Application {
         }
         String result = builder.toString();
 
-        Controller.updateStatus(Arrays.toString(command));
-        Controller.updateStatus(result);
+        System.out.println(Arrays.toString(command));
+        System.out.println(result);
+
+//        Controller.updateStatus(Arrays.toString(command));
+//        Controller.updateStatus(result);
     }
 }
