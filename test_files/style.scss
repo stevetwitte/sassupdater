@@ -9,19 +9,7 @@ $light-blue: lighten($blue, 10%);
   background-color: $purple;
   opacity: 0.8;
   border-bottom: 10px solid $light-purple;
-}
-
-.site-logo-top-bar {
-  height: 60px;
-  margin-left: 1rem;
-}
-
-.vertical-center-top-text {
-  right: 1rem;
-  margin: 0;
-}
-
-.vertical-center {
+  border-top: 200px solid $blue;
 }
 
 .dark-blue-bg {

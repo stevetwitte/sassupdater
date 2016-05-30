@@ -1,15 +1,8 @@
 .site-header {
   background-color: #898EFF;
   opacity: 0.8;
-  border-bottom: 10px solid #bcbfff; }
-
-.site-logo-top-bar {
-  height: 60px;
-  margin-left: 1rem; }
-
-.vertical-center-top-text {
-  right: 1rem;
-  margin: 0; }
+  border-bottom: 10px solid #bcbfff;
+  border-top: 200px solid #5991db; }
 
 .dark-blue-bg {
   background-color: #2f75d2;

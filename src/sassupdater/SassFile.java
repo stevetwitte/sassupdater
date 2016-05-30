@@ -1,6 +1,7 @@
 package sassupdater;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by stephen on 5/29/16.
@@ -15,8 +16,8 @@ public class SassFile {
         cssfilename = cssfname;
     }
 
-    public boolean update() {
-        System.out.println("Got it");
+    public boolean update() throws IOException {
+        Main.compileSassFile(this);
         return true;
     }
 }

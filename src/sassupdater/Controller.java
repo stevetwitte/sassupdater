@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -56,7 +57,11 @@ public class Controller {
             Button button = new Button("Update");
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
-                    SObject.update();
+                    try {
+                        SObject.update();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             });
 
