@@ -43,8 +43,7 @@ public class Controller {
     }
 
     @FXML protected void onClickAddFileModel(ActionEvent event) {
-        FileList.addFile(new SassFile(sassFile, cssFile));
-        System.out.println(FileList.getFile(0));
+        new SassFile(sassFile, cssFile);
         updateView();
     }
 
@@ -52,10 +51,10 @@ public class Controller {
         List<SassFile> fileList = FileList.getFileList();
 
         listOfAddedFiles.getChildren().clear();
-        System.out.println(fileList);
         for (SassFile SObject: fileList) {
-            Button button = new Button("Update");
-            button.setOnAction(new EventHandler<ActionEvent>() {
+
+            Button updateButton = new Button("Update");
+            updateButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     try {
                         SObject.update();
@@ -65,7 +64,16 @@ public class Controller {
                 }
             });
 
-            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), button));
+            Button removeButton = new Button("Remove");
+            removeButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    SObject.remove();
+                    updateView();
+                }
+            });
+
+            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), updateButton, removeButton));
         }
     }
 }

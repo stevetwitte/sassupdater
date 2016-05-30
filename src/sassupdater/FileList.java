@@ -21,6 +21,10 @@ public class FileList {
         modelList.add(sfile);
     }
 
+    protected static void removeFile(SassFile sfile) {
+        modelList.remove(sfile);
+    }
+
     protected static SassFile getFile(int index) {
         return modelList.get(index);
     }
