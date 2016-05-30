@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_sassupdater" default="compile.module.sassupdater">
+  <dirname property="module.sassupdater.basedir" file="${ant.file.module_sassupdater}"/>
+  
+  <property name="module.jdk.home.sassupdater" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.sassupdater" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.sassupdater" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.sassupdater" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="sassupdater.output.dir" value="${module.sassupdater.basedir}/out/production/SassUpdater"/>
+  <property name="sassupdater.testoutput.dir" value="${module.sassupdater.basedir}/out/test/SassUpdater"/>
+  
+  <path id="sassupdater.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="sassupdater.module.production.classpath">
+    <path refid="${module.jdk.classpath.sassupdater}"/>
+  </path>
+  
+  <path id="sassupdater.runtime.production.module.classpath">
+    <pathelement location="${sassupdater.output.dir}"/>
+  </path>
+  
+  <path id="sassupdater.module.classpath">
+    <path refid="${module.jdk.classpath.sassupdater}"/>
+    <pathelement location="${sassupdater.output.dir}"/>
+  </path>
+  
+  <path id="sassupdater.runtime.module.classpath">
+    <pathelement location="${sassupdater.testoutput.dir}"/>
+    <pathelement location="${sassupdater.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.sassupdater">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.sassupdater">
+    <patternset refid="excluded.from.module.sassupdater"/>
+  </patternset>
+  
+  <path id="sassupdater.module.sourcepath">
+    <dirset dir="${module.sassupdater.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.sassupdater" depends="compile.module.sassupdater.production,compile.module.sassupdater.tests" description="Compile module SassUpdater"/>
+  
+  <target name="compile.module.sassupdater.production" depends="register.custom.compilers" description="Compile module SassUpdater; production classes">
+    <mkdir dir="${sassupdater.output.dir}"/>
+    <javac2 destdir="${sassupdater.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.sassupdater}/javac">
+      <compilerarg line="${compiler.args.sassupdater}"/>
+      <bootclasspath refid="sassupdater.module.bootclasspath"/>
+      <classpath refid="sassupdater.module.production.classpath"/>
+      <src refid="sassupdater.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.sassupdater"/>
+    </javac2>
+    
+    <copy todir="${sassupdater.output.dir}">
+      <fileset dir="${module.sassupdater.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.sassupdater.tests" depends="register.custom.compilers,compile.module.sassupdater.production" description="compile module SassUpdater; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.sassupdater" description="cleanup module">
+    <delete dir="${sassupdater.output.dir}"/>
+    <delete dir="${sassupdater.testoutput.dir}"/>
+  </target>
+</project>
