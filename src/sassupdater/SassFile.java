@@ -16,6 +16,7 @@ public class SassFile {
     }
 
     public boolean update() {
+        System.out.println("Got it");
         return true;
     }
 }

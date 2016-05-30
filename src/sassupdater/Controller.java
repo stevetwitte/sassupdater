@@ -1,6 +1,7 @@
 package sassupdater;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -52,7 +53,14 @@ public class Controller {
         listOfAddedFiles.getChildren().clear();
         System.out.println(fileList);
         for (SassFile SObject: fileList) {
-            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), new Button("Update")));
+            Button button = new Button("Update");
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    SObject.update();
+                }
+            });
+
+            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), button));
         }
     }
 }
