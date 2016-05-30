@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -21,6 +22,7 @@ public class Controller {
     public Text sassFileText;
     public Text cssFileText;
     public VBox listOfAddedFiles;
+    public static TextArea statusOutput;
 
     @FXML protected void onClickSassFile(ActionEvent event) {
         FileChooser FCSass = new FileChooser();
@@ -102,5 +104,9 @@ public class Controller {
 
             listOfAddedFiles.getChildren().add(itemBox);
         }
+    }
+
+    public static void updateStatus(String msgLine) {
+        statusOutput.appendText(msgLine);
     }
 }

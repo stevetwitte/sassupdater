@@ -9,6 +9,10 @@
 .file-label {
 }
 
+.command-out {
+    -fx-font-size: 10;
+}
+
 .item-box {
     -fx-spacing: 10;
     -fx-alignment: center-right;
