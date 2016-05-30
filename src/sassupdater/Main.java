@@ -49,7 +49,7 @@ public class Main extends Application {
     }
 
     public static void forceSassFile(SassFile sassFile) throws IOException {
-        String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--force", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
+        String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--update", "--force", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
         Process process = new ProcessBuilder(command).start();
         InputStream stream = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));

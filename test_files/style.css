@@ -24,8 +24,6 @@
 #wifel-div {
   background-image: url(../img/7onebball_bg.jpg);
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 0;
   border-right: 10px solid #dfd4ac; }
 
@@ -33,8 +31,6 @@
   background-color: #5991db;
   border-right: 10px solid #83ade4;
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 0; }
 
 .highlight-div {

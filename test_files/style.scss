@@ -36,8 +36,6 @@ $light-blue: lighten($blue, 10%);
 #wifel-div {
   background-image: url(../img/7onebball_bg.jpg);
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 0;
   border-right: 10px solid darken($off-white, 10%);
 }
@@ -46,8 +44,6 @@ $light-blue: lighten($blue, 10%);
   background-color: $blue;
   border-right: 10px solid $light-blue;
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   padding: 0;
 }
 
