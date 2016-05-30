@@ -1,14 +1,16 @@
 package sassupdater;
 
+import java.io.File;
+
 /**
  * Created by stephen on 5/29/16.
  */
 public class SassFile {
 
-    String sassfilename;
-    String cssfilename;
+    File sassfilename;
+    File cssfilename;
 
-    public SassFile(String sassfname, String cssfname) {
+    public SassFile(File sassfname, File cssfname) {
         sassfilename = sassfname;
         cssfilename = cssfname;
     }

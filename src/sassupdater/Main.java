@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static SassFile[] SassFileObjects = new SassFile[10];
     public static Stage primaryStage;
 
     @Override
@@ -17,7 +16,6 @@ public class Main extends Application {
         primaryStage.setTitle("Sass Updater");
         primaryStage.setScene(new Scene(root, 600, 800));
         primaryStage.show();
-        SassFileObjects[0] = new SassFile("test.scss", "test.css");
     }
 
 

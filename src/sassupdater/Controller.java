@@ -2,9 +2,13 @@ package sassupdater;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import java.io.File;
+import java.util.List;
 
 
 public class Controller {
@@ -14,24 +18,41 @@ public class Controller {
     @FXML
     public Text sassFileText;
     public Text cssFileText;
+    public VBox listOfAddedFiles;
 
     @FXML protected void onClickSassFile(ActionEvent event) {
-        FileChooser fileChooserSass = new FileChooser();
-        fileChooserSass.setTitle("Choose Sass/Scss File");
-        fileChooserSass.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("SASS/SCSS", "*.scss", "*.sass")
+        FileChooser FCSass = new FileChooser();
+        FCSass.setTitle("Choose SASS File");
+        FCSass.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("SASS/SCSS", "*.scss", "*.sass")
         );
-        sassFile = fileChooserSass.showOpenDialog(Main.primaryStage);
+        sassFile = FCSass.showOpenDialog(Main.primaryStage);
         sassFileText.setText(sassFile.getAbsoluteFile().toString());
     }
 
     @FXML protected void onClickCssFile(ActionEvent event) {
-        FileChooser fileChooserCss = new FileChooser();
-        fileChooserCss.setTitle("Choose CSS File");
-        fileChooserCss.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSS", "*.css")
+        FileChooser FCCss = new FileChooser();
+        FCCss.setTitle("Choose CSS File");
+        FCCss.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("CSS", "*.css")
         );
-        cssFile = fileChooserCss.showOpenDialog(Main.primaryStage);
+        cssFile = FCCss.showOpenDialog(Main.primaryStage);
         cssFileText.setText(cssFile.getAbsoluteFile().toString());
+    }
+
+    @FXML protected void onClickAddFileModel(ActionEvent event) {
+        FileList.addFile(new SassFile(sassFile, cssFile));
+        System.out.println(FileList.getFile(0));
+        updateView();
+    }
+
+    private void updateView() {
+        List<SassFile> fileList = FileList.getFileList();
+
+        listOfAddedFiles.getChildren().clear();
+        System.out.println(fileList);
+        for (SassFile SObject: fileList) {
+            listOfAddedFiles.getChildren().add(new HBox(new Text(SObject.sassfilename.getName()), new Button("Update")));
+        }
     }
 }
