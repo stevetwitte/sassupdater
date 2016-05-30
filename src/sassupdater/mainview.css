@@ -3,11 +3,11 @@
 }
 
 .file-label {
-    -fx-fill: #2f75d2;
 }
 
 .item-box {
     -fx-spacing: 20;
+    -fx-alignment: center-right;
 }
 
 .button {
@@ -24,4 +24,12 @@
 
 .red {
     -fx-background-color: #aa382f;
+}
+
+.light-blue {
+    -fx-background-color: #a4d4db;
+}
+
+.light-grey {
+    -fx-background-color: #d1d1d1;
 }

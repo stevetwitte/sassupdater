@@ -25,4 +25,12 @@ public class SassFile {
     public void remove() {
         FileList.removeFile(this);
     }
+
+    public String getDisplayName() {
+        if (this.sassfilename.getAbsoluteFile().toString().length() > 18) {
+            return "..." + this.sassfilename.getAbsoluteFile().toString().substring(Math.max(0, 20));
+        } else {
+            return this.sassfilename.getAbsoluteFile().toString();
+        }
+    }
 }

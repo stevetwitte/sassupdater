@@ -76,18 +76,22 @@ public class Controller {
             Button removeButton = new Button("X");
             removeButton.getStyleClass().addAll("button", "red");
             removeButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
+                @Override public void handle(ActionEvent event) {
                     SObject.remove();
                     updateView();
                 }
             });
 
-            Text fileName = new Text(SObject.sassfilename.getName());
+            Text fileName = new Text(SObject.getDisplayName());
             fileName.getStyleClass().add("file-label");
 
             HBox itemBox = new HBox(fileName, updateButton, removeButton);
             itemBox.getStyleClass().add("item-box");
+            if (fileList.indexOf(SObject) % 2 == 0) {
+                itemBox.getStyleClass().add("light-grey");
+            } else {
+                itemBox.getStyleClass().add("light-blue");
+            }
 
             listOfAddedFiles.getChildren().add(itemBox);
         }
