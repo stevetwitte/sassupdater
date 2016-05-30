@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="TOP_LEFT" hgap="10" maxHeight="300.0" maxWidth="460.0" minHeight="300.0" minWidth="460.0" prefHeight="300.0" prefWidth="460.0" vgap="10" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sassupdater.Controller">
+<GridPane alignment="TOP_LEFT" hgap="10" maxHeight="300.0" maxWidth="460.0" minHeight="300.0" minWidth="460.0" prefHeight="300.0" prefWidth="460.0" styleClass="main-window" vgap="10" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sassupdater.Controller">
     <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#addbba" height="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="380.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#addbba" height="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="380.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -24,12 +24,12 @@
         <GridPane.margin>
             <Insets left="5.0" />
         </GridPane.margin></Text>
-    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickAddFileModel" prefHeight="26.0" prefWidth="47.0" styleClass="button, green" text="+" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickAddFileModel" prefHeight="26.0" prefWidth="47.0" styleClass="button, green" text="+" GridPane.rowIndex="3" GridPane.valignment="TOP">
       <opaqueInsets>
          <Insets top="10.0" />
       </opaqueInsets></Button>
-    <VBox fx:id="listOfAddedFiles" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="380.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#685b5b" height="3.0" layoutX="77.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="380.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+    <VBox fx:id="listOfAddedFiles" styleClass="files-box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="380.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     <columnConstraints>
         <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="47.0" />
         <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="380.0" />

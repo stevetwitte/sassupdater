@@ -30,15 +30,39 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void compileSassFile(SassFile sassFile) throws IOException {
+    public static void updateSassFile(SassFile sassFile) throws IOException {
         String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--update", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
         Process process = new ProcessBuilder(command).start();
         InputStream stream = process.getInputStream();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+        StringBuilder builder = new StringBuilder();
+        String line;
+        while ( (line = reader.readLine()) != null) {
+            builder.append(line);
+            builder.append(System.getProperty("line.separator"));
+        }
+        String result = builder.toString();
 
         System.out.println(Arrays.toString(command));
-        while (bufferedReader.readLine() != null) {
-            System.out.println(bufferedReader.readLine());
+        System.out.println(result);
+    }
+
+    public static void forceSassFile(SassFile sassFile) throws IOException {
+        String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--force", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
+        Process process = new ProcessBuilder(command).start();
+        InputStream stream = process.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+        StringBuilder builder = new StringBuilder();
+        String line;
+        while ( (line = reader.readLine()) != null) {
+            builder.append(line);
+            builder.append(System.getProperty("line.separator"));
         }
+        String result = builder.toString();
+
+        System.out.println(Arrays.toString(command));
+        System.out.println(result);
     }
 }

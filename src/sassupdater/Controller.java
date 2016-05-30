@@ -61,8 +61,8 @@ public class Controller {
         listOfAddedFiles.getChildren().clear();
         for (SassFile SObject: fileList) {
 
-            Button updateButton = new Button("UP");
-            updateButton.getStyleClass().addAll("button", "green");
+            Button updateButton = new Button("U");
+            updateButton.getStyleClass().addAll("button", "sm-button", "green");
             updateButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     try {
@@ -73,8 +73,20 @@ public class Controller {
                 }
             });
 
+            Button forceButton = new Button("F");
+            forceButton.getStyleClass().addAll("button", "sm-button", "green");
+            forceButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    try {
+                        SObject.force();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            });
+
             Button removeButton = new Button("X");
-            removeButton.getStyleClass().addAll("button", "red");
+            removeButton.getStyleClass().addAll("button", "sm-button", "red");
             removeButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent event) {
                     SObject.remove();
@@ -85,13 +97,8 @@ public class Controller {
             Text fileName = new Text(SObject.getDisplayName());
             fileName.getStyleClass().add("file-label");
 
-            HBox itemBox = new HBox(fileName, updateButton, removeButton);
-            itemBox.getStyleClass().add("item-box");
-            if (fileList.indexOf(SObject) % 2 == 0) {
-                itemBox.getStyleClass().add("light-grey");
-            } else {
-                itemBox.getStyleClass().add("light-blue");
-            }
+            HBox itemBox = new HBox(fileName, updateButton, forceButton, removeButton);
+            itemBox.getStyleClass().addAll("item-box", "light-grey");
 
             listOfAddedFiles.getChildren().add(itemBox);
         }

@@ -18,7 +18,12 @@ public class SassFile {
     }
 
     public boolean update() throws IOException {
-        Main.compileSassFile(this);
+        Main.updateSassFile(this);
+        return true;
+    }
+
+    public boolean force() throws IOException {
+        Main.forceSassFile(this);
         return true;
     }
 

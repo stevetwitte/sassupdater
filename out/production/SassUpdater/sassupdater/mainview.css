@@ -1,3 +1,7 @@
+.main-window {
+    -fx-background-color: #f1eedc;
+}
+
 .chosen-file-box {
     -fx-fill: #444444;
 }
@@ -6,12 +10,24 @@
 }
 
 .item-box {
-    -fx-spacing: 20;
+    -fx-spacing: 10;
     -fx-alignment: center-right;
+    -fx-padding: 5;
+}
+
+.files-box {
+    -fx-spacing: 10;
 }
 
 .button {
     -fx-text-fill: #353434;
+    -fx-padding: 5;
+}
+
+.sm-button {
+    -fx-pref-height: 25;
+    -fx-min-height: 25;
+    -fx-max-height: 25;
 }
 
 .blue {
@@ -27,7 +43,7 @@
 }
 
 .light-blue {
-    -fx-background-color: #a4d4db;
+    -fx-background-color: #addbba;
 }
 
 .light-grey {
