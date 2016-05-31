@@ -13,7 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-
+/**
+ * JavaFX controller for the main view
+ */
 public class Controller {
     private File sassFile;
     private File cssFile;
@@ -24,6 +26,12 @@ public class Controller {
     public VBox listOfAddedFiles;
     public static TextArea statusOutput;
 
+    /**
+     * Event that opens a file chooser with constraints on type
+     * After choose a file the text is updated in the view and the local variable sassFile is set
+     * TODO: Handle not selecting a file, currently throws exception and crashes
+     * @param event ActionEvent
+     */
     @FXML protected void onClickSassFile(ActionEvent event) {
         FileChooser FCSass = new FileChooser();
         FCSass.setTitle("Choose SASS File");
@@ -38,6 +46,12 @@ public class Controller {
         }
     }
 
+    /**
+     * Event that opens a file chooser with constraints on type
+     * After choose a file the text is updated in the view and the local variable sassFile is set
+     * TODO: Handle not selecting a file, currently throws exception and crashes
+     * @param event ActionEvent
+     */
     @FXML protected void onClickCssFile(ActionEvent event) {
         FileChooser FCCss = new FileChooser();
         FCCss.setTitle("Choose CSS File");
@@ -52,11 +66,20 @@ public class Controller {
         }
     }
 
+    /**
+     * Event that creates a new SassFile from local variables and updates the view
+     * @param event ActionEvent
+     */
     @FXML protected void onClickAddFileModel(ActionEvent event) {
         new SassFile(sassFile, cssFile);
         updateView();
     }
 
+    /**
+     * Updates the view
+     * More specifically updates the list of files in the view
+     * TODO: Should also clear local variables after adding
+     */
     private void updateView() {
         List<SassFile> fileList = FileList.getFileList();
 
@@ -106,6 +129,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Updates the status box at the bottom of the view
+     * TODO: Code This
+     * @param msgLine String
+     */
     public static void updateStatus(String msgLine) {
         statusOutput.appendText(msgLine);
     }

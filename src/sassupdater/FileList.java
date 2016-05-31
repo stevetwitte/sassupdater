@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by stephen on 5/29/16.
+ * Singleton for keeping track of SassFiles
  */
 public class FileList {
     private static List<SassFile> modelList = new ArrayList<SassFile>();
