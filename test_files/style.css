@@ -6,7 +6,8 @@
 
 .dark-blue-bg {
   background-color: #2f75d2;
-  border-right: 10px solid #83ade4; }
+  border-right: 10px solid #83ade4;
+  border-left: 20px solid black; }
 
 .off-white-bg {
   background-color: #ede7d1; }

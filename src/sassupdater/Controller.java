@@ -23,6 +23,7 @@ public class Controller {
     @FXML
     public Text sassFileText;
     public Text cssFileText;
+    public Text sassFileLocationText;
     public VBox listOfAddedFiles;
     public TextArea statusOutput;
 
@@ -94,6 +95,41 @@ public class Controller {
         cssFileText.setText("choose a css file");
         cssFile = null;
         updateView();
+    }
+
+    /**
+     * Event that calls main method to switch view to the config screen
+     *
+     */
+    @FXML protected void onClickConfig(ActionEvent event) {
+        Main.switchScene("config");
+    }
+
+    /**
+     * Event that calls main method to switch view to main screen
+     */
+    @FXML protected void onClickMain(ActionEvent event) {
+        Main.switchScene("main");
+    }
+
+    /**
+     * Event that handle setting the sass executable location
+     */
+    @FXML protected void onClickSassLocation(ActionEvent event) {
+        FileChooser FCSassLocation = new FileChooser();
+        FCSassLocation.setTitle("Choose Sass Gem Location");
+        FCSassLocation.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Sass Gem", "*.")
+        );
+        Main.sassFileLocation = FCSassLocation.showOpenDialog(Main.primaryStage);
+
+        if (Main.sassFileLocation != null) {
+            if (Main.sassFileLocation.getAbsoluteFile().toString().length() > 30) {
+                sassFileLocationText.setText("..." + Main.sassFileLocation.getAbsoluteFile().toString().substring(Math.max(0, 5)));
+            } else {
+                sassFileLocationText.setText(Main.sassFileLocation.getAbsoluteFile().toString());
+            }
+        }
     }
 
     /**

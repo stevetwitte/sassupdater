@@ -27,8 +27,12 @@ public class SassCompiler {
      */
     protected String[] updateSassFile(SassFile sassFile) throws IOException {
         String force = null;
-        sassFileLocation = "/home/stephen/.rbenv/shims/sass";
-        String[] command = { sassFileLocation, "--no-cache", "--update", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
+
+        if (Main.getSassLocation() == null) {
+            return new String[] {"Sass Gem Location Unset in Config"};
+        }
+
+        String[] command = { Main.getSassLocation(), "--no-cache", "--update", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
         Process process = new ProcessBuilder(command).start();
         InputStream stream = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
@@ -61,7 +65,11 @@ public class SassCompiler {
      * @throws IOException
      */
     protected String[] forceSassFile(SassFile sassFile) throws IOException {
-        String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--update", "--force", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
+        if (Main.getSassLocation().equals("")) {
+            return new String[] {"Sass Gem Location Unset in Config"};
+        }
+
+        String[] command = { Main.getSassLocation(), "--no-cache", "--update", "--force", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
         Process process = new ProcessBuilder(command).start();
         InputStream stream = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
