@@ -6,15 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-
 /**
  * Main class of application and sass commands
- * TODO: Refactor updateSassFile and forceSassFile into one method (possibly move them)
+ *
  */
 
 public class Main extends Application {
