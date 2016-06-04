@@ -15,6 +15,7 @@ $light-blue: lighten($blue, 10%);
 .dark-blue-bg {
   background-color: $dark-blue;
   border-right: 10px solid $light-blue;
+  border-left: 20px solid black;
 }
 
 .off-white-bg {

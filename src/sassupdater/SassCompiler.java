@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
  */
 public class SassCompiler {
     private static SassCompiler sassCompiler = new SassCompiler();
+    private String sassFileLocation;
 
     private SassCompiler() {}
 
@@ -25,7 +26,9 @@ public class SassCompiler {
      * @throws IOException
      */
     protected String[] updateSassFile(SassFile sassFile) throws IOException {
-        String[] command = { "/home/stephen/.rbenv/shims/sass", "--no-cache", "--update", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
+        String force = null;
+        sassFileLocation = "/home/stephen/.rbenv/shims/sass";
+        String[] command = { sassFileLocation, "--no-cache", "--update", sassFile.sassfilename.getAbsoluteFile().toString() + ":" + sassFile.cssfilename.getAbsoluteFile().toString() };
         Process process = new ProcessBuilder(command).start();
         InputStream stream = process.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
