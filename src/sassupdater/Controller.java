@@ -17,19 +17,19 @@ import java.util.List;
  * JavaFX controller for the main view
  */
 public class Controller {
-    private File sassFile;
-    private File cssFile;
+    private File sassFile = null;
+    private File cssFile = null;
 
     @FXML
     public Text sassFileText;
     public Text cssFileText;
     public VBox listOfAddedFiles;
-    public static TextArea statusOutput;
+    public TextArea statusOutput;
 
     /**
      * Event that opens a file chooser with constraints on type
      * After choose a file the text is updated in the view and the local variable sassFile is set
-     * TODO: Handle not selecting a file, currently throws exception and crashes
+     *
      * @param event ActionEvent
      */
     @FXML protected void onClickSassFile(ActionEvent event) {
@@ -39,17 +39,22 @@ public class Controller {
             new FileChooser.ExtensionFilter("SASS/SCSS", "*.scss", "*.sass")
         );
         sassFile = FCSass.showOpenDialog(Main.primaryStage);
-        if (sassFile.getAbsoluteFile().toString().length() > 10) {
-            sassFileText.setText("..." + sassFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+
+        if (sassFile != null) {
+            if (sassFile.getAbsoluteFile().toString().length() > 10) {
+                sassFileText.setText("..." + sassFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+            } else {
+                sassFileText.setText(sassFile.getAbsoluteFile().toString());
+            }
         } else {
-            sassFileText.setText(sassFile.getAbsoluteFile().toString());
+            this.updateStatus(new String[] {"No SASS/SCSS File Selected"});
         }
     }
 
     /**
      * Event that opens a file chooser with constraints on type
      * After choose a file the text is updated in the view and the local variable sassFile is set
-     * TODO: Handle not selecting a file, currently throws exception and crashes
+     *
      * @param event ActionEvent
      */
     @FXML protected void onClickCssFile(ActionEvent event) {
@@ -59,10 +64,14 @@ public class Controller {
             new FileChooser.ExtensionFilter("CSS", "*.css")
         );
         cssFile = FCCss.showOpenDialog(Main.primaryStage);
-        if (cssFile.getAbsoluteFile().toString().length() > 10) {
-            cssFileText.setText("..." + cssFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+        if (cssFile != null) {
+            if (cssFile.getAbsoluteFile().toString().length() > 10) {
+                cssFileText.setText("..." + cssFile.getAbsoluteFile().toString().substring(Math.max(0, 14)));
+            } else {
+                cssFileText.setText(cssFile.getAbsoluteFile().toString());
+            }
         } else {
-            cssFileText.setText(cssFile.getAbsoluteFile().toString());
+            this.updateStatus(new String[] {"No CSS File Selected"});
         }
     }
 
@@ -71,17 +80,20 @@ public class Controller {
      * @param event ActionEvent
      */
     @FXML protected void onClickAddFileModel(ActionEvent event) {
-        new SassFile(sassFile, cssFile);
+        updateStatus(new String[] {new SassFile(sassFile, cssFile).getDisplayName() + " Added"});
+        sassFileText.setText("choose a sass/scss file");
+        sassFile = null;
+        cssFileText.setText("choose a css file");
+        cssFile = null;
         updateView();
     }
 
     /**
      * Updates the view
-     * More specifically updates the list of files in the view
-     * TODO: Should also clear local variables after adding
+     *
      */
     private void updateView() {
-        List<SassFile> fileList = FileList.getFileList();
+        List<SassFile> fileList = FileList.getInstance().getFileList();
 
         listOfAddedFiles.getChildren().clear();
         for (SassFile SObject: fileList) {
@@ -91,7 +103,7 @@ public class Controller {
             updateButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     try {
-                        SObject.update();
+                        updateStatus(SObject.update());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -103,7 +115,7 @@ public class Controller {
             forceButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent e) {
                     try {
-                        SObject.force();
+                        updateStatus(SObject.force());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -115,6 +127,7 @@ public class Controller {
             removeButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override public void handle(ActionEvent event) {
                     SObject.remove();
+                    updateStatus(new String[] {SObject.getDisplayName() + " Removed"});
                     updateView();
                 }
             });
@@ -132,9 +145,12 @@ public class Controller {
     /**
      * Updates the status box at the bottom of the view
      * TODO: Code This
-     * @param msgLine String
+     * @param Message String[]
      */
-    public static void updateStatus(String msgLine) {
-        statusOutput.appendText(msgLine);
+    public void updateStatus(String[] Message) {
+        for (String msgLine : Message) {
+            statusOutput.appendText(" \n");
+            statusOutput.appendText(msgLine);
+        }
     }
 }

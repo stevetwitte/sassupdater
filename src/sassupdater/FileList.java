@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * Singleton for keeping track of SassFiles
+ * This really is for organization and if logic needs to be performed
+ * when adding/removing SassFiles from the list
  */
 public class FileList {
     private static List<SassFile> modelList = new ArrayList<SassFile>();
@@ -17,19 +19,19 @@ public class FileList {
         return filelist;
     }
 
-    protected static void addFile(SassFile sfile) {
+    protected void addFile(SassFile sfile) {
         modelList.add(sfile);
     }
 
-    protected static void removeFile(SassFile sfile) {
+    protected void removeFile(SassFile sfile) {
         modelList.remove(sfile);
     }
 
-    protected static SassFile getFile(int index) {
+    protected SassFile getFile(int index) {
         return modelList.get(index);
     }
 
-    protected static List<SassFile> getFileList() {
+    protected List<SassFile> getFileList() {
         return modelList;
     }
 }

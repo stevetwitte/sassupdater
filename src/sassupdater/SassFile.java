@@ -14,42 +14,40 @@ public class SassFile {
 
     /**
      * constructor also adds object to FileList
-     * @param sassfname File
-     * @param cssfname File
+     * @param sassFName File
+     * @param cssFName File
      */
-    public SassFile(File sassfname, File cssfname) {
-        sassfilename = sassfname;
-        cssfilename = cssfname;
-        FileList.addFile(this);
+    public SassFile(File sassFName, File cssFName) {
+        sassfilename = sassFName;
+        cssfilename = cssFName;
+        FileList.getInstance().addFile(this);
     }
 
     /**
      * runs the command to update the css file from sass
      * TODO: Give this a meaningful return
-     * @return boolean
+     * @return String[]
      * @throws IOException
      */
-    public boolean update() throws IOException {
-        Main.updateSassFile(this);
-        return true;
+    public String[] update() throws IOException {
+        return SassCompiler.getInstance().updateSassFile(this);
     }
 
     /**
      * runs the command to force update the css file from sass
      * TODO: Give this a meaningful return
-     * @return boolean
+     * @return String[]
      * @throws IOException
      */
-    public boolean force() throws IOException {
-        Main.forceSassFile(this);
-        return true;
+    public String[] force() throws IOException {
+        return SassCompiler.getInstance().forceSassFile(this);
     }
 
     /**
      * Removes only reference to object in FileList
      */
     public void remove() {
-        FileList.removeFile(this);
+        FileList.getInstance().removeFile(this);
     }
 
     /**
