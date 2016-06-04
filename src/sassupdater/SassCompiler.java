@@ -39,13 +39,17 @@ public class SassCompiler {
         }
         String result = builder.toString();
 
-        /**
-         * TODO: Update view with result
-         */
-        System.out.println(Arrays.toString(command));
-        System.out.println(result);
+        if (result.endsWith("\n")) {
+            result = result.substring(0, result.length() - 2);
+        }
 
-        return new String[] { Arrays.toString(command), result };
+        String prettyCommand = "Updating " + sassFile.sassfilename.getName();
+
+        if (result.equals("")) {
+            result = "No changes detected.";
+        }
+
+        return new String[] { prettyCommand, "Output:", result };
     }
 
     /**
@@ -68,13 +72,13 @@ public class SassCompiler {
         }
         String result = builder.toString();
 
-        /**
-         * TODO: Update view with result
-         */
-        System.out.println(Arrays.toString(command));
-        System.out.println(result);
+        if (result.endsWith("\n")) {
+            result = result.substring(0, result.length() - 2);
+        }
 
-        return new String[] { Arrays.toString(command), result };
+        String prettyCommand = "Force updating " + sassFile.sassfilename.getName();
+
+        return new String[] { prettyCommand, "Output:", result };
     }
 
 }

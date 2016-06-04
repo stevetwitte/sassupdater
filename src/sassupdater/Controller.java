@@ -80,6 +80,14 @@ public class Controller {
      * @param event ActionEvent
      */
     @FXML protected void onClickAddFileModel(ActionEvent event) {
+        if (sassFile == null) {
+            updateStatus(new String[] {"No SASS/SCSS file selected"});
+            return;
+        }
+        if (cssFile == null) {
+            updateStatus(new String[] {"No CSS file selected"});
+            return;
+        }
         updateStatus(new String[] {new SassFile(sassFile, cssFile).getDisplayName() + " Added"});
         sassFileText.setText("choose a sass/scss file");
         sassFile = null;
@@ -90,7 +98,6 @@ public class Controller {
 
     /**
      * Updates the view
-     *
      */
     private void updateView() {
         List<SassFile> fileList = FileList.getInstance().getFileList();
@@ -144,7 +151,7 @@ public class Controller {
 
     /**
      * Updates the status box at the bottom of the view
-     * TODO: Code This
+     *
      * @param Message String[]
      */
     public void updateStatus(String[] Message) {
