@@ -29,7 +29,7 @@
       <opaqueInsets>
          <Insets top="10.0" />
       </opaqueInsets></Button>
-    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickConfig" prefHeight="26.0" prefWidth="47.0" styleClass="button, green" text="CFG" GridPane.rowIndex="3" GridPane.valignment="TOP">
+    <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onClickConfig" prefHeight="26.0" prefWidth="47.0" styleClass="button, light-grey" text="CFG" GridPane.rowIndex="3" GridPane.valignment="TOP">
         <opaqueInsets>
             <Insets top="10.0" />
         </opaqueInsets>

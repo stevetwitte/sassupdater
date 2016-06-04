@@ -10,7 +10,8 @@ import java.io.File;
 
 /**
  * Main class of application and sass commands
- *
+ * TODO: Save config to a file
+ * TODO: Show config screen on first load
  */
 
 public class Main extends Application {

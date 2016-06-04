@@ -18,7 +18,7 @@
             <Insets left="5.0" />
         </GridPane.margin></Text>
     <Button alignment="CENTER" onAction="#onClickConfigSave" prefHeight="26.0" prefWidth="200" styleClass="button, green" text="SAVE" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
-    <Button alignment="CENTER" onAction="#onClickConfigCancel" prefHeight="26.0" prefWidth="200" styleClass="button, green" text="SAVE" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+    <Button alignment="CENTER" onAction="#onClickConfigCancel" prefHeight="26.0" prefWidth="200" styleClass="button, red" text="CANCEL" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#685b5b" height="3.0" layoutX="77.0" layoutY="56.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="380.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.halignment="CENTER"/>
     <columnConstraints>
         <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" prefWidth="47.0" />

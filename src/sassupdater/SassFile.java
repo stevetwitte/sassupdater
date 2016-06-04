@@ -25,7 +25,7 @@ public class SassFile {
 
     /**
      * runs the command to update the css file from sass
-     * TODO: Give this a meaningful return
+     *
      * @return String[]
      * @throws IOException
      */
@@ -35,7 +35,7 @@ public class SassFile {
 
     /**
      * runs the command to force update the css file from sass
-     * TODO: Give this a meaningful return
+     *
      * @return String[]
      * @throws IOException
      */

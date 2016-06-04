@@ -19,6 +19,7 @@ import java.util.List;
 public class Controller {
     private File sassFile = null;
     private File cssFile = null;
+    private File sassGem = null;
 
     @FXML
     public Text sassFileText;
@@ -106,9 +107,26 @@ public class Controller {
     }
 
     /**
-     * Event that calls main method to switch view to main screen
+     * Event that calls main method to save config and switch view to main screen
      */
-    @FXML protected void onClickMain(ActionEvent event) {
+    @FXML protected void onClickConfigSave(ActionEvent event) {
+        Main.sassFileLocation = sassGem;
+        Main.switchScene("main");
+    }
+
+    /**
+     * Event that calls main method to save config and switch view to main screen
+     */
+    @FXML protected void onClickConfigCancel(ActionEvent event) {
+        if (Main.sassFileLocation != null) {
+            if (Main.sassFileLocation.getAbsoluteFile().toString().length() > 30) {
+                sassFileLocationText.setText("..." + sassGem.getAbsoluteFile().toString().substring(Math.max(0, 5)));
+            } else {
+                sassFileLocationText.setText(sassGem.getAbsoluteFile().toString());
+            }
+        } else {
+            sassFileLocationText.setText("choose your sass gem");
+        }
         Main.switchScene("main");
     }
 
@@ -121,13 +139,13 @@ public class Controller {
         FCSassLocation.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Sass Gem", "*.")
         );
-        Main.sassFileLocation = FCSassLocation.showOpenDialog(Main.primaryStage);
+        sassGem = FCSassLocation.showOpenDialog(Main.primaryStage);
 
-        if (Main.sassFileLocation != null) {
-            if (Main.sassFileLocation.getAbsoluteFile().toString().length() > 30) {
-                sassFileLocationText.setText("..." + Main.sassFileLocation.getAbsoluteFile().toString().substring(Math.max(0, 5)));
+        if (sassGem != null) {
+            if (sassGem.getAbsoluteFile().toString().length() > 30) {
+                sassFileLocationText.setText("..." + sassGem.getAbsoluteFile().toString().substring(Math.max(0, 5)));
             } else {
-                sassFileLocationText.setText(Main.sassFileLocation.getAbsoluteFile().toString());
+                sassFileLocationText.setText(sassGem.getAbsoluteFile().toString());
             }
         }
     }

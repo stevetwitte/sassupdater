@@ -21,7 +21,7 @@ public class SassCompiler {
 
     /**
      * Runs the sass --update command with the provided SassFile
-     * TODO: set the sass location, and options from config
+     *
      * @param sassFile SassFile
      * @throws IOException
      */
@@ -60,7 +60,7 @@ public class SassCompiler {
 
     /**
      * Runs the sass --force command with the provided SassFile
-     * TODO: set the sass location, and options from config
+     *
      * @param sassFile SassFile
      * @throws IOException
      */
